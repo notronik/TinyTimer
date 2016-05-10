@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="6198" systemVersion="14A297b" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="6198"/>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="10117"/>
+        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -641,22 +643,23 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Timer" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
         </scene>
-        <!--Window Controller - Window-->
+        <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
             <objects>
-                <windowController id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
+                    <window key="window" title="Timer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="IQv-IB-iLA" customClass="TranslucentWindow" customModule="Timer" customModuleProvider="target">
+                        <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1680" height="1027"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                     </window>
                     <connections>
+                        <outlet property="window" destination="IQv-IB-iLA" id="sVI-vs-EM1"/>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
@@ -667,15 +670,136 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="m2S-Jp-Qdl">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" wantsLayer="YES" id="hgf-nX-hOH">
+                        <rect key="frame" x="0.0" y="0.0" width="222" height="105"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="1000" verticalStackHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVU-mT-wWd">
+                                <rect key="frame" x="0.0" y="0.0" width="222" height="105"/>
+                                <subviews>
+                                    <textField identifier="Time Display" horizontalHuggingPriority="749" verticalHuggingPriority="500" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="G0E-uV-nxu">
+                                        <rect key="frame" x="-2" y="59" width="226" height="46"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="LLP-DL-DXG"/>
+                                        </constraints>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="Kfo-UX-3ee">
+                                            <dateFormatter key="formatter" formatterBehavior="custom10_4" timeStyle="short" dateFormat="HH:mm:ss" id="ckC-Hj-Crw"/>
+                                            <font key="font" metaFont="system" size="38"/>
+                                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="value" keyPath="interval" id="hJa-xH-QMG">
+                                                <dictionary key="options">
+                                                    <string key="NSMultipleValuesPlaceholder">MVP</string>
+                                                    <string key="NSNoSelectionPlaceholder">NSP</string>
+                                                    <string key="NSNotApplicablePlaceholder">NAP</string>
+                                                    <string key="NSNullPlaceholder">NUL</string>
+                                                </dictionary>
+                                            </binding>
+                                            <outlet property="delegate" destination="XfG-lQ-9wD" id="mzd-e6-Rre"/>
+                                        </connections>
+                                    </textField>
+                                    <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H6f-Yb-kHq">
+                                        <rect key="frame" x="0.0" y="29" width="222" height="22"/>
+                                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="center" title="01:30:00" placeholderString="hh:mm:ss" drawsBackground="YES" usesSingleLineMode="YES" id="pbj-BU-5Tf">
+                                            <dateFormatter key="formatter" formatterBehavior="custom10_4" timeStyle="short" dateFormat="HH:mm:ss" id="rUw-Jr-FjT"/>
+                                            <font key="font" metaFont="system"/>
+                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                        </textFieldCell>
+                                        <connections>
+                                            <binding destination="XfG-lQ-9wD" name="value" keyPath="interval" id="O2d-0t-JDs"/>
+                                            <outlet property="delegate" destination="XfG-lQ-9wD" id="d5Z-Y6-Td9"/>
+                                        </connections>
+                                    </textField>
+                                    <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDV-XM-LK1">
+                                        <rect key="frame" x="0.0" y="0.0" width="222" height="21"/>
+                                        <subviews>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qoI-qc-eUI">
+                                                <rect key="frame" x="-6" y="-7" width="70" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Start" alternateTitle="Stop" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LMn-rX-bnk">
+                                                    <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <action selector="startStopBtnClick:" target="XfG-lQ-9wD" id="4Kh-QK-PCV"/>
+                                                </connections>
+                                            </button>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="5bk-0T-VU5">
+                                                <rect key="frame" x="60" y="-7" width="95" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Question" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SdZ-rJ-zl5">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
+                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jip-oJ-EUD">
+                                                <rect key="frame" x="151" y="-7" width="77" height="32"/>
+                                                <buttonCell key="cell" type="push" title="Times" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="js4-oa-TxW">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                                <connections>
+                                                    <segue destination="ucu-tc-VI8" kind="popover" popoverAnchorView="Jip-oJ-EUD" popoverBehavior="t" preferredEdge="maxX" id="w3o-GO-GBb"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <visibilityPriorities>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                            <integer value="1000"/>
+                                        </visibilityPriorities>
+                                        <customSpacing>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                            <real value="3.4028234663852886e+38"/>
+                                        </customSpacing>
+                                    </stackView>
+                                </subviews>
+                                <visibilityPriorities>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                    <integer value="1000"/>
+                                </visibilityPriorities>
+                                <customSpacing>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                    <real value="3.4028234663852886e+38"/>
+                                </customSpacing>
+                            </stackView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="jVU-mT-wWd" secondAttribute="trailing" id="JHG-CE-LaK"/>
+                            <constraint firstAttribute="bottom" secondItem="jVU-mT-wWd" secondAttribute="bottom" id="UhU-Jf-vUb"/>
+                            <constraint firstItem="jVU-mT-wWd" firstAttribute="leading" secondItem="hgf-nX-hOH" secondAttribute="leading" id="jkc-Ab-asW"/>
+                            <constraint firstItem="jVU-mT-wWd" firstAttribute="top" secondItem="hgf-nX-hOH" secondAttribute="top" id="o3d-Dx-kMW"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="bgView" destination="hgf-nX-hOH" id="aRZ-u9-pcu"/>
+                        <outlet property="questionButton" destination="5bk-0T-VU5" id="zth-gq-Mly"/>
+                        <outlet property="startButton" destination="qoI-qc-eUI" id="zq9-Br-rU5"/>
+                        <outlet property="timeEdit" destination="H6f-Yb-kHq" id="LBe-VQ-Z4V"/>
+                        <outlet property="timesButton" destination="Jip-oJ-EUD" id="R0n-kC-gfx"/>
+                    </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="655"/>
+            <point key="canvasLocation" x="22.5" y="620.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ybT-5Z-LKW">
+            <objects>
+                <viewController id="ucu-tc-VI8" sceneMemberID="viewController">
+                    <view key="view" id="UDE-aH-qpw">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="Qp4-4k-iZC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="116" y="965"/>
         </scene>
     </scenes>
 </document>
