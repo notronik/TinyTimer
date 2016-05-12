@@ -9,21 +9,23 @@
 /* Begin PBXBuildFile section */
 		2401A0FB1CE22A0500DFF68F /* TranslucentWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2401A0FA1CE22A0500DFF68F /* TranslucentWindow.swift */; };
 		243E85AE1CE20D2600F77235 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243E85AD1CE20D2600F77235 /* AppDelegate.swift */; };
-		243E85B01CE20D2600F77235 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243E85AF1CE20D2600F77235 /* ViewController.swift */; };
+		243E85B01CE20D2600F77235 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243E85AF1CE20D2600F77235 /* TimerViewController.swift */; };
 		243E85B21CE20D2600F77235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 243E85B11CE20D2600F77235 /* Assets.xcassets */; };
 		243E85B51CE20D2600F77235 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 243E85B31CE20D2600F77235 /* Main.storyboard */; };
 		248F68D11CE253BA001C37E5 /* DispatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248F68D01CE253BA001C37E5 /* DispatchTimer.swift */; };
+		2496768F1CE4B55F004FF186 /* QuestionLapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496768E1CE4B55F004FF186 /* QuestionLapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		2401A0FA1CE22A0500DFF68F /* TranslucentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslucentWindow.swift; sourceTree = "<group>"; };
 		243E85AA1CE20D2600F77235 /* TinyTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		243E85AD1CE20D2600F77235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		243E85AF1CE20D2600F77235 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		243E85AF1CE20D2600F77235 /* TimerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewController.swift; sourceTree = "<group>"; };
 		243E85B11CE20D2600F77235 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		243E85B41CE20D2600F77235 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		243E85B61CE20D2600F77235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		248F68D01CE253BA001C37E5 /* DispatchTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTimer.swift; sourceTree = "<group>"; };
+		2496768E1CE4B55F004FF186 /* QuestionLapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionLapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,7 +88,8 @@
 		24BFD22D1CE3C905000ED640 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				243E85AF1CE20D2600F77235 /* ViewController.swift */,
+				243E85AF1CE20D2600F77235 /* TimerViewController.swift */,
+				2496768E1CE4B55F004FF186 /* QuestionLapViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -162,8 +165,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2401A0FB1CE22A0500DFF68F /* TranslucentWindow.swift in Sources */,
-				243E85B01CE20D2600F77235 /* ViewController.swift in Sources */,
+				243E85B01CE20D2600F77235 /* TimerViewController.swift in Sources */,
 				243E85AE1CE20D2600F77235 /* AppDelegate.swift in Sources */,
+				2496768F1CE4B55F004FF186 /* QuestionLapViewController.swift in Sources */,
 				248F68D11CE253BA001C37E5 /* DispatchTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

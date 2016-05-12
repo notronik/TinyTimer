@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  TimerViewController.swift
 //  Timer
 //
 //  Created by Nik on 10/05/2016.
@@ -16,8 +16,9 @@ enum TransparencyState {
     case Transparent, Opaque
 }
 
-class ViewController: NSViewController, NSTextFieldDelegate {
+class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDelegate {
     dynamic var interval: NSDate = NSDate(timeIntervalSinceReferenceDate: 0)
+    var startTime: NSDate = NSDate()
     
     var asyncTimer: DispatchTimer!
     var currentTimerState = TimerState.Stopped
@@ -29,6 +30,8 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     @IBOutlet var timesButton: NSButton!
     @IBOutlet var timeEdit: NSTextField!
     @IBOutlet var buttonBar: NSStackView!
+    
+    var questionLaps: [QuestionLap] = []
 
     // MARK: - View Setup
     override func viewDidLoad() {
@@ -110,10 +113,24 @@ class ViewController: NSViewController, NSTextFieldDelegate {
         }
     }
     
+    @IBAction func questionBtnPress(sender: AnyObject) {
+        let duration = NSDate(timeIntervalSinceReferenceDate:
+            Double(
+                calculateSecondsRemaining(questionLaps.count > 0 ? questionLaps.last!.timeLeft : self.startTime)
+                    - calculateSecondsRemaining(self.interval)))
+        
+        questionLaps.append(QuestionLap(number: questionLaps.count + 1,
+            duration: duration,
+            timeLeft: self.interval))
+    }
+    
+    
     // MARK: - NSTextFieldDelegate
     override func controlTextDidChange(obj: NSNotification) {
         guard let field = obj.object as? NSTextField else { return }
         if let newInterval = field.objectValue as? NSDate where calculateSecondsRemaining(newInterval) > 0 {
+            startTime = newInterval
+            
             startButton.enabled = true
         } else {
             startButton.enabled = false
@@ -122,6 +139,8 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     
     // MARK: - NSResponder (mouse in and out for background view)
     override func mouseEntered(theEvent: NSEvent) {
+        super.mouseEntered(theEvent)
+        
         if currentTimerState == .Running {
             animateBecomeOpaque()
             buttonBar.hidden = false
@@ -129,6 +148,8 @@ class ViewController: NSViewController, NSTextFieldDelegate {
     }
     
     override func mouseExited(theEvent: NSEvent) {
+        super.mouseExited(theEvent)
+        
         if currentTimerState == .Running {
             animateBecomeTransparent()
             buttonBar.hidden = true
@@ -175,6 +196,23 @@ class ViewController: NSViewController, NSTextFieldDelegate {
                 bglayer.addAnimation(borderanim, forKey: "borderColor")
             CATransaction.commit()
         CATransaction.commit()
+    }
+    
+    // MARK: - Preparation for segue
+    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
+        super.prepareForSegue(segue, sender: sender)
+        
+        if segue.identifier == "QuestionLapSegue" {
+            if let controller = segue.destinationController as? QuestionLapViewController {
+                controller.delegate = self
+                controller.questions = questionLaps
+            }
+        }
+    }
+    
+    // MARK: - QuestionLapDelegate
+    func questionLapWillDisappear(questions: [QuestionLap]) {
+        questionLaps = questions
     }
     
     // MARK: - Misc Utility
