@@ -12,11 +12,11 @@
                 <application id="hnw-xV-0zn" sceneMemberID="viewController">
                     <menu key="mainMenu" title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
                         <items>
-                            <menuItem title="Timer" id="1Xt-HY-uBw">
+                            <menuItem title="TinyTimer" id="1Xt-HY-uBw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <menu key="submenu" title="Timer" systemMenu="apple" id="uQy-DD-JDr">
+                                <menu key="submenu" title="TinyTimer" systemMenu="apple" id="uQy-DD-JDr">
                                     <items>
-                                        <menuItem title="About Timer" id="5kV-Vb-QxS">
+                                        <menuItem title="About TinyTimer" id="5kV-Vb-QxS">
                                             <modifierMask key="keyEquivalentModifierMask"/>
                                             <connections>
                                                 <action selector="orderFrontStandardAboutPanel:" target="Ady-hI-5gd" id="Exp-CZ-Vem"/>
@@ -30,7 +30,7 @@
                                             <menu key="submenu" title="Services" systemMenu="services" id="hz9-B4-Xy5"/>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="4je-JR-u6R"/>
-                                        <menuItem title="Hide Timer" keyEquivalent="h" id="Olw-nP-bQN">
+                                        <menuItem title="Hide TinyTimer" keyEquivalent="h" id="Olw-nP-bQN">
                                             <connections>
                                                 <action selector="hide:" target="Ady-hI-5gd" id="PnN-Uc-m68"/>
                                             </connections>
@@ -48,7 +48,7 @@
                                             </connections>
                                         </menuItem>
                                         <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
-                                        <menuItem title="Quit Timer" keyEquivalent="q" id="4sb-4s-VLi">
+                                        <menuItem title="Quit TinyTimer" keyEquivalent="q" id="4sb-4s-VLi">
                                             <connections>
                                                 <action selector="terminate:" target="Ady-hI-5gd" id="Te7-pn-YzF"/>
                                             </connections>
@@ -629,7 +629,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <menu key="submenu" title="Help" systemMenu="help" id="F2S-fz-NVQ">
                                     <items>
-                                        <menuItem title="Timer Help" keyEquivalent="?" id="FKE-Sm-Kum">
+                                        <menuItem title="TinyTimer Help" keyEquivalent="?" id="FKE-Sm-Kum">
                                             <connections>
                                                 <action selector="showHelp:" target="Ady-hI-5gd" id="y7X-2Q-9no"/>
                                             </connections>
@@ -643,7 +643,7 @@
                         <outlet property="delegate" destination="Voe-Tx-rLC" id="PrD-fu-P6m"/>
                     </connections>
                 </application>
-                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Timer" customModuleProvider="target"/>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="TinyTimer" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="0.0"/>
@@ -652,7 +652,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="Timer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="IQv-IB-iLA" customClass="TranslucentWindow" customModule="Timer" customModuleProvider="target">
+                    <window key="window" title="TinyTimer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="IQv-IB-iLA" customClass="TranslucentWindow" customModule="TinyTimer" customModuleProvider="target">
                         <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -670,16 +670,16 @@
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
             <objects>
-                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="Timer" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="XfG-lQ-9wD" customClass="ViewController" customModule="TinyTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="hgf-nX-hOH">
-                        <rect key="frame" x="0.0" y="0.0" width="222" height="105"/>
+                        <rect key="frame" x="0.0" y="0.0" width="230" height="113"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="1000" verticalStackHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVU-mT-wWd">
-                                <rect key="frame" x="0.0" y="0.0" width="222" height="105"/>
+                                <rect key="frame" x="0.0" y="0.0" width="230" height="113"/>
                                 <subviews>
                                     <textField identifier="Time Display" horizontalHuggingPriority="749" verticalHuggingPriority="500" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="G0E-uV-nxu">
-                                        <rect key="frame" x="-2" y="59" width="226" height="46"/>
+                                        <rect key="frame" x="2" y="63" width="226" height="46"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="LLP-DL-DXG"/>
                                         </constraints>
@@ -702,7 +702,7 @@
                                         </connections>
                                     </textField>
                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H6f-Yb-kHq">
-                                        <rect key="frame" x="0.0" y="29" width="222" height="22"/>
+                                        <rect key="frame" x="4" y="33" width="222" height="22"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="center" title="01:30:00" placeholderString="hh:mm:ss" drawsBackground="YES" usesSingleLineMode="YES" id="pbj-BU-5Tf">
                                             <dateFormatter key="formatter" formatterBehavior="custom10_4" timeStyle="short" dateFormat="HH:mm:ss" id="rUw-Jr-FjT"/>
                                             <font key="font" metaFont="system"/>
@@ -715,7 +715,7 @@
                                         </connections>
                                     </textField>
                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDV-XM-LK1">
-                                        <rect key="frame" x="0.0" y="0.0" width="222" height="21"/>
+                                        <rect key="frame" x="4" y="4" width="222" height="21"/>
                                         <subviews>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qoI-qc-eUI">
                                                 <rect key="frame" x="-6" y="-7" width="70" height="32"/>
@@ -757,6 +757,7 @@
                                         </customSpacing>
                                     </stackView>
                                 </subviews>
+                                <edgeInsets key="edgeInsets" left="4" right="4" top="4" bottom="4"/>
                                 <visibilityPriorities>
                                     <integer value="1000"/>
                                     <integer value="1000"/>
@@ -778,6 +779,7 @@
                     </view>
                     <connections>
                         <outlet property="bgView" destination="hgf-nX-hOH" id="aRZ-u9-pcu"/>
+                        <outlet property="buttonBar" destination="SDV-XM-LK1" id="7Xv-oH-VGj"/>
                         <outlet property="questionButton" destination="5bk-0T-VU5" id="zth-gq-Mly"/>
                         <outlet property="startButton" destination="qoI-qc-eUI" id="zq9-Br-rU5"/>
                         <outlet property="timeEdit" destination="H6f-Yb-kHq" id="LBe-VQ-Z4V"/>
@@ -786,7 +788,7 @@
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="22.5" y="620.5"/>
+            <point key="canvasLocation" x="26" y="620.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="ybT-5Z-LKW">

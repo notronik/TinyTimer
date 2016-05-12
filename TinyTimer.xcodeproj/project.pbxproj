@@ -17,7 +17,7 @@
 
 /* Begin PBXFileReference section */
 		2401A0FA1CE22A0500DFF68F /* TranslucentWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslucentWindow.swift; sourceTree = "<group>"; };
-		243E85AA1CE20D2600F77235 /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		243E85AA1CE20D2600F77235 /* TinyTimer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TinyTimer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		243E85AD1CE20D2600F77235 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		243E85AF1CE20D2600F77235 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		243E85B11CE20D2600F77235 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		243E85A11CE20D2500F77235 = {
 			isa = PBXGroup;
 			children = (
-				243E85AC1CE20D2600F77235 /* Timer */,
+				243E85AC1CE20D2600F77235 /* TinyTimer */,
 				243E85AB1CE20D2600F77235 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,31 +48,55 @@
 		243E85AB1CE20D2600F77235 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				243E85AA1CE20D2600F77235 /* Timer.app */,
+				243E85AA1CE20D2600F77235 /* TinyTimer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		243E85AC1CE20D2600F77235 /* Timer */ = {
+		243E85AC1CE20D2600F77235 /* TinyTimer */ = {
 			isa = PBXGroup;
 			children = (
 				243E85AD1CE20D2600F77235 /* AppDelegate.swift */,
-				243E85AF1CE20D2600F77235 /* ViewController.swift */,
-				2401A0FA1CE22A0500DFF68F /* TranslucentWindow.swift */,
-				248F68D01CE253BA001C37E5 /* DispatchTimer.swift */,
+				24BFD22D1CE3C905000ED640 /* Controllers */,
+				24BFD22C1CE3C8F1000ED640 /* Elements */,
+				24BFD22B1CE3C8E8000ED640 /* Utility */,
 				243E85B11CE20D2600F77235 /* Assets.xcassets */,
 				243E85B31CE20D2600F77235 /* Main.storyboard */,
 				243E85B61CE20D2600F77235 /* Info.plist */,
 			);
-			path = Timer;
+			path = TinyTimer;
+			sourceTree = "<group>";
+		};
+		24BFD22B1CE3C8E8000ED640 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				248F68D01CE253BA001C37E5 /* DispatchTimer.swift */,
+			);
+			name = Utility;
+			sourceTree = "<group>";
+		};
+		24BFD22C1CE3C8F1000ED640 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				2401A0FA1CE22A0500DFF68F /* TranslucentWindow.swift */,
+			);
+			name = Elements;
+			sourceTree = "<group>";
+		};
+		24BFD22D1CE3C905000ED640 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				243E85AF1CE20D2600F77235 /* ViewController.swift */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		243E85A91CE20D2600F77235 /* Timer */ = {
+		243E85A91CE20D2600F77235 /* TinyTimer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 243E85B91CE20D2600F77235 /* Build configuration list for PBXNativeTarget "Timer" */;
+			buildConfigurationList = 243E85B91CE20D2600F77235 /* Build configuration list for PBXNativeTarget "TinyTimer" */;
 			buildPhases = (
 				243E85A61CE20D2600F77235 /* Sources */,
 				243E85A71CE20D2600F77235 /* Frameworks */,
@@ -82,9 +106,9 @@
 			);
 			dependencies = (
 			);
-			name = Timer;
+			name = TinyTimer;
 			productName = Timer;
-			productReference = 243E85AA1CE20D2600F77235 /* Timer.app */;
+			productReference = 243E85AA1CE20D2600F77235 /* TinyTimer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +126,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 243E85A51CE20D2500F77235 /* Build configuration list for PBXProject "Timer" */;
+			buildConfigurationList = 243E85A51CE20D2500F77235 /* Build configuration list for PBXProject "TinyTimer" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -115,7 +139,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				243E85A91CE20D2600F77235 /* Timer */,
+				243E85A91CE20D2600F77235 /* TinyTimer */,
 			);
 		};
 /* End PBXProject section */
@@ -245,10 +269,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Timer/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TinyTimer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.notro.Timer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TinyTimer;
 			};
 			name = Debug;
 		};
@@ -257,17 +281,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = Timer/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/TinyTimer/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.notro.Timer;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = TinyTimer;
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		243E85A51CE20D2500F77235 /* Build configuration list for PBXProject "Timer" */ = {
+		243E85A51CE20D2500F77235 /* Build configuration list for PBXProject "TinyTimer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				243E85B71CE20D2600F77235 /* Debug */,
@@ -276,7 +300,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		243E85B91CE20D2600F77235 /* Build configuration list for PBXNativeTarget "Timer" */ = {
+		243E85B91CE20D2600F77235 /* Build configuration list for PBXNativeTarget "TinyTimer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				243E85BA1CE20D2600F77235 /* Debug */,
