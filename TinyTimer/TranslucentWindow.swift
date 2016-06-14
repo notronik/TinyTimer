@@ -10,26 +10,26 @@ import Cocoa
 import CoreGraphics
 
 class TranslucentWindow: NSWindow {
-    required init?(coder: NSCoder) {
-        super.init(coder: coder)
-        
-        setup()
-    }
-    
-    override init(contentRect: NSRect, styleMask aStyle: Int, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+//    required init?(coder: NSCoder) {
+//        super.init(coder: coder)
+//        
+//        setup()
+//    }
+//    
+    override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag)
         
         setup()
     }
     
     private func setup() {
-        self.level = Int(CGWindowLevelKey.FloatingWindowLevelKey.rawValue) // Make the window float
+        self.level = Int(CGWindowLevelKey.floatingWindow.rawValue) // Make the window float
         self.ignoresMouseEvents = false // Don't ignore mouse events
-        self.backgroundColor = self.backgroundColor.colorWithAlphaComponent(0.0)
-        self.opaque = true
+        self.backgroundColor = self.backgroundColor.withAlphaComponent(0.0)
+        self.isOpaque = true
     }
     
-    override var canBecomeKeyWindow: Bool {
+    override var canBecomeKey: Bool {
         get {
             return true
         }
@@ -38,12 +38,12 @@ class TranslucentWindow: NSWindow {
     // MARK: - Make the window draggable
     // Taken from https://developer.apple.com/library/mac/samplecode/RoundTransparentWindow/Listings/Classes_CustomWindow_m.html
     var initialClickLocation: NSPoint = NSPoint()
-    override func mouseDown(theEvent: NSEvent) {
+    override func mouseDown(_ theEvent: NSEvent) {
         initialClickLocation = theEvent.locationInWindow
     }
     
-    override func mouseDragged(theEvent: NSEvent) {
-        guard let screenVisibleFrame = NSScreen.mainScreen()?.visibleFrame else { return }
+    override func mouseDragged(_ theEvent: NSEvent) {
+        guard let screenVisibleFrame = NSScreen.main()?.visibleFrame else { return }
         
         let windowFrame = self.frame
         var newOrigin = windowFrame.origin

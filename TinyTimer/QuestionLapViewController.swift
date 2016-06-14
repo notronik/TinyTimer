@@ -10,10 +10,10 @@ import Cocoa
 
 class QuestionLap: NSObject {
     var questionNumber: Int
-    var duration: NSDate
-    var timeLeft: NSDate
+    var duration: Date
+    var timeLeft: Date
     
-    init(number questionNumber: Int, duration: NSDate, timeLeft: NSDate) {
+    init(number questionNumber: Int, duration: Date, timeLeft: Date) {
         self.questionNumber = questionNumber
         self.duration = duration
         self.timeLeft = timeLeft
@@ -21,7 +21,7 @@ class QuestionLap: NSObject {
 }
 
 protocol QuestionLapDelegate {
-    func questionLapWillDisappear(questions: [QuestionLap])
+    func questionLapWillDisappear(_ questions: [QuestionLap])
 }
 
 class QuestionLapViewController: NSViewController {
@@ -38,7 +38,7 @@ class QuestionLapViewController: NSViewController {
         delegate?.questionLapWillDisappear(self.questions)
     }
     
-    @IBAction func clearButtonPressed(sender: AnyObject) {
+    @IBAction func clearButtonPressed(_ sender: AnyObject) {
         self.questions.removeAll()
     }
 }

@@ -9,20 +9,20 @@
 import Cocoa
 
 enum TimerState {
-    case Running, Stopped
+    case running, stopped
 }
 
 enum TransparencyState {
-    case Transparent, Opaque
+    case transparent, opaque
 }
 
 class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDelegate {
-    dynamic var interval: NSDate = NSDate(timeIntervalSinceReferenceDate: 0)
-    var startTime: NSDate = NSDate()
+    @objc dynamic var interval: Date = Date(timeIntervalSinceReferenceDate: 0)
+    var startTime: Date = Date()
     
-    var asyncTimer: DispatchTimer!
-    var currentTimerState = TimerState.Stopped
-    var currentTransparencyState = TransparencyState.Opaque
+    var asyncTimer: DispatchSourceTimer!
+    var currentTimerState = TimerState.stopped
+    var currentTransparencyState = TransparencyState.opaque
     
     @IBOutlet var bgView: NSView!
     @IBOutlet var startButton: NSButton!
@@ -36,30 +36,34 @@ class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDel
     // MARK: - View Setup
     override func viewDidLoad() {
         super.viewDidLoad()
-        questionButton.hidden = true
+        questionButton.isHidden = true
         
-        asyncTimer = DispatchTimer(interval: 1.0, queue: dispatch_get_main_queue()) {
+        
+        asyncTimer = DispatchSource.timer(flags: DispatchSource.TimerFlags.init(rawValue: 0), queue: DispatchQueue.main)
+        asyncTimer.scheduleRepeating(deadline: DispatchTime.now() + DispatchTimeInterval.seconds(1), interval: DispatchTimeInterval.seconds(1), leeway: DispatchTimeInterval.nanoseconds(10))
+        
+        asyncTimer.setEventHandler {
             // Stop the timer when it expires
-            self.interval = self.interval.dateByAddingTimeInterval(-1)
+            self.interval = self.interval.addingTimeInterval(-1)
             if self.calculateSecondsRemaining(self.interval) <= 0 {
-                self.enterTimerState(TimerState.Stopped)
-                self.startButton.enabled = false
+                self.enterTimerState(TimerState.stopped)
+                self.startButton.isEnabled = false
             }
         }
         
-        controlTextDidChange(NSNotification(name: String(), object: timeEdit))
+        controlTextDidChange(Notification(name: Notification.Name(""), object: timeEdit, userInfo: nil))
         
         let ta = NSTrackingArea(rect: self.view.bounds, options:
-            [NSTrackingAreaOptions.MouseEnteredAndExited, NSTrackingAreaOptions.ActiveAlways],
+            [NSTrackingAreaOptions.mouseEnteredAndExited, NSTrackingAreaOptions.activeAlways],
                                 owner: self, userInfo: nil)
         self.view.addTrackingArea(ta)
     }
     
     override func viewWillAppear() {
         guard let layer = bgView.layer else { return }
-        layer.backgroundColor = NSColor.windowBackgroundColor().colorWithAlphaComponent(1.0).CGColor
+        layer.backgroundColor = NSColor.windowBackgroundColor().withAlphaComponent(1.0).cgColor
         layer.cornerRadius = 4
-        layer.borderColor = NSColor.windowFrameColor().CGColor
+        layer.borderColor = NSColor.windowFrameColor().cgColor
         layer.borderWidth = 1.0
     }
 
@@ -68,27 +72,33 @@ class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDel
             
         }
     }
+    
+    deinit {
+        if let atimer = asyncTimer {
+            atimer.cancel()
+        }
+    }
 
     // MARK: - Actions
-    @IBAction func startStopBtnClick(sender: NSButton) {
+    @IBAction func startStopBtnClick(_ sender: NSButton) {
         if sender.state == NSOnState { // Start timer on ON state
-            enterTimerState(TimerState.Running)
+            enterTimerState(TimerState.running)
         } else if sender.state == NSOffState { // Stop timer on OFF state
-            enterTimerState(TimerState.Stopped)
+            enterTimerState(TimerState.stopped)
         }
     }
     
-    func enterTimerState(state: TimerState) {
+    func enterTimerState(_ state: TimerState) {
         guard let atimer = asyncTimer where state != currentTimerState else { return }
         
         currentTimerState = state
         
         switch state {
-        case .Running:
-            atimer.startTimer()
-            questionButton.hidden = false
-            timesButton.hidden = true
-            timeEdit.hidden = true
+        case .running:
+            atimer.resume()
+            questionButton.isHidden = false
+            timesButton.isHidden = true
+            timeEdit.isHidden = true
 //            buttonBar.hidden = true // Don't hide, the mouse actions will do this. The mouse is on the button when it is pressed.
             
             if startButton.state != NSOnState {
@@ -97,12 +107,12 @@ class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDel
             
             animateBecomeTransparent()
             break;
-        case .Stopped:
-            atimer.stopTimer()
-            questionButton.hidden = true
-            timesButton.hidden = false
-            timeEdit.hidden = false
-            buttonBar.hidden = false
+        case .stopped:
+            atimer.suspend()
+            questionButton.isHidden = true
+            timesButton.isHidden = false
+            timeEdit.isHidden = false
+            buttonBar.isHidden = false
             
             if startButton.state != NSOffState {
                 startButton.state = NSOffState
@@ -113,10 +123,10 @@ class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDel
         }
     }
     
-    @IBAction func questionBtnPress(sender: AnyObject) {
-        let duration = NSDate(timeIntervalSinceReferenceDate:
+    @IBAction func questionBtnPress(_ sender: AnyObject) {
+        let duration = Date(timeIntervalSinceReferenceDate:
             Double(
-                calculateSecondsRemaining(questionLaps.count > 0 ? questionLaps.last!.timeLeft : self.startTime)
+                calculateSecondsRemaining(questionLaps.count > 0 ? questionLaps.last!.timeLeft: self.startTime)
                     - calculateSecondsRemaining(self.interval)))
         
         questionLaps.append(QuestionLap(number: questionLaps.count + 1,
@@ -126,52 +136,52 @@ class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDel
     
     
     // MARK: - NSTextFieldDelegate
-    override func controlTextDidChange(obj: NSNotification) {
+    override func controlTextDidChange(_ obj: Notification) {
         guard let field = obj.object as? NSTextField else { return }
-        if let newInterval = field.objectValue as? NSDate where calculateSecondsRemaining(newInterval) > 0 {
+        if let newInterval = field.objectValue as? Date where calculateSecondsRemaining(newInterval) > 0 {
             startTime = newInterval
             
-            startButton.enabled = true
+            startButton.isEnabled = true
         } else {
-            startButton.enabled = false
+            startButton.isEnabled = false
         }
     }
     
     // MARK: - NSResponder (mouse in and out for background view)
-    override func mouseEntered(theEvent: NSEvent) {
+    override func mouseEntered(_ theEvent: NSEvent) {
         super.mouseEntered(theEvent)
         
-        if currentTimerState == .Running {
+        if currentTimerState == .running {
             animateBecomeOpaque()
-            buttonBar.hidden = false
+            buttonBar.isHidden = false
         }
     }
     
-    override func mouseExited(theEvent: NSEvent) {
+    override func mouseExited(_ theEvent: NSEvent) {
         super.mouseExited(theEvent)
         
-        if currentTimerState == .Running {
+        if currentTimerState == .running {
             animateBecomeTransparent()
-            buttonBar.hidden = true
+            buttonBar.isHidden = true
         }
     }
 
     // MARK: - Animations
     func animateBecomeTransparent() {
-        guard currentTransparencyState != .Transparent else { return }
+        guard currentTransparencyState != .transparent else { return }
         
-        currentTransparencyState = .Transparent
+        currentTransparencyState = .transparent
         animateBackgroundColor(0.0, interval: 0.2)
     }
     
     func animateBecomeOpaque() {
-        guard currentTransparencyState != .Opaque else { return }
+        guard currentTransparencyState != .opaque else { return }
         
-        currentTransparencyState = .Opaque
+        currentTransparencyState = .opaque
         animateBackgroundColor(1.0, interval: 0.2)
     }
     
-    private func animateBackgroundColor(opacity: Float, interval: NSTimeInterval) {
+    private func animateBackgroundColor(_ opacity: Float, interval: TimeInterval) {
         guard let bglayer = bgView.layer else { return }
         
         CATransaction.begin()
@@ -179,28 +189,28 @@ class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDel
             CATransaction.begin()
                 let bganim = CABasicAnimation(keyPath: "backgroundColor")
                 bganim.fromValue = bglayer.backgroundColor
-                bglayer.backgroundColor = NSColor.windowBackgroundColor().colorWithAlphaComponent(CGFloat(opacity)).CGColor
+                bglayer.backgroundColor = NSColor.windowBackgroundColor().withAlphaComponent(CGFloat(opacity)).cgColor
                 // Keep new color
-                bganim.removedOnCompletion = false
+                bganim.isRemovedOnCompletion = false
                 bganim.fillMode = kCAFillModeForwards
-                bglayer.addAnimation(bganim, forKey: "backgroundColor")
+                bglayer.add(bganim, forKey: "backgroundColor")
             CATransaction.commit()
         
             CATransaction.begin()
                 let borderanim = CABasicAnimation(keyPath: "borderColor")
                 borderanim.fromValue = bglayer.borderColor
-                bglayer.borderColor = NSColor.windowFrameColor().colorWithAlphaComponent(CGFloat(opacity)).CGColor
+                bglayer.borderColor = NSColor.windowFrameColor().withAlphaComponent(CGFloat(opacity)).cgColor
                 // Keep new color
-                borderanim.removedOnCompletion = false
+                borderanim.isRemovedOnCompletion = false
                 borderanim.fillMode = kCAFillModeForwards
-                bglayer.addAnimation(borderanim, forKey: "borderColor")
+                bglayer.add(borderanim, forKey: "borderColor")
             CATransaction.commit()
         CATransaction.commit()
     }
     
     // MARK: - Preparation for segue
-    override func prepareForSegue(segue: NSStoryboardSegue, sender: AnyObject?) {
-        super.prepareForSegue(segue, sender: sender)
+    override func prepare(for segue: NSStoryboardSegue, sender: AnyObject?) {
+        super.prepare(for: segue, sender: sender)
         
         if segue.identifier == "QuestionLapSegue" {
             if let controller = segue.destinationController as? QuestionLapViewController {
@@ -211,18 +221,18 @@ class TimerViewController: NSViewController, NSTextFieldDelegate, QuestionLapDel
     }
     
     // MARK: - QuestionLapDelegate
-    func questionLapWillDisappear(questions: [QuestionLap]) {
+    func questionLapWillDisappear(_ questions: [QuestionLap]) {
         questionLaps = questions
     }
     
     // MARK: - Misc Utility
-    func calculateSecondsRemaining(date: NSDate) -> Int {
+    func calculateSecondsRemaining(_ date: Date) -> Int {
         // Calculate the number of seconds
-        let components = NSCalendar.currentCalendar().components([
-            NSCalendarUnit.Hour,
-            NSCalendarUnit.Minute,
-            NSCalendarUnit.Second], fromDate: date)
-        return components.second + 60 * components.minute + 60 * 60 * components.hour
+        let components = Calendar.current().components([
+            Calendar.Unit.hour,
+            Calendar.Unit.minute,
+            Calendar.Unit.second], from: date)
+        return components.second! + 60 * components.minute! + 60 * 60 * components.hour!
     }
 
 }

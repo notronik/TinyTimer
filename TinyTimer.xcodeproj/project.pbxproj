@@ -12,7 +12,6 @@
 		243E85B01CE20D2600F77235 /* TimerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 243E85AF1CE20D2600F77235 /* TimerViewController.swift */; };
 		243E85B21CE20D2600F77235 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 243E85B11CE20D2600F77235 /* Assets.xcassets */; };
 		243E85B51CE20D2600F77235 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 243E85B31CE20D2600F77235 /* Main.storyboard */; };
-		248F68D11CE253BA001C37E5 /* DispatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 248F68D01CE253BA001C37E5 /* DispatchTimer.swift */; };
 		2496768F1CE4B55F004FF186 /* QuestionLapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2496768E1CE4B55F004FF186 /* QuestionLapViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,7 +23,6 @@
 		243E85B11CE20D2600F77235 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		243E85B41CE20D2600F77235 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		243E85B61CE20D2600F77235 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		248F68D01CE253BA001C37E5 /* DispatchTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DispatchTimer.swift; sourceTree = "<group>"; };
 		2496768E1CE4B55F004FF186 /* QuestionLapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuestionLapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,20 +59,11 @@
 				243E85AD1CE20D2600F77235 /* AppDelegate.swift */,
 				24BFD22D1CE3C905000ED640 /* Controllers */,
 				24BFD22C1CE3C8F1000ED640 /* Elements */,
-				24BFD22B1CE3C8E8000ED640 /* Utility */,
 				243E85B11CE20D2600F77235 /* Assets.xcassets */,
 				243E85B31CE20D2600F77235 /* Main.storyboard */,
 				243E85B61CE20D2600F77235 /* Info.plist */,
 			);
 			path = TinyTimer;
-			sourceTree = "<group>";
-		};
-		24BFD22B1CE3C8E8000ED640 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-				248F68D01CE253BA001C37E5 /* DispatchTimer.swift */,
-			);
-			name = Utility;
 			sourceTree = "<group>";
 		};
 		24BFD22C1CE3C8F1000ED640 /* Elements */ = {
@@ -121,11 +110,12 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0730;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = notro;
 				TargetAttributes = {
 					243E85A91CE20D2600F77235 = {
 						CreatedOnToolsVersion = 7.3.1;
+						LastSwiftMigration = 0800;
 					};
 				};
 			};
@@ -168,7 +158,6 @@
 				243E85B01CE20D2600F77235 /* TimerViewController.swift in Sources */,
 				243E85AE1CE20D2600F77235 /* AppDelegate.swift in Sources */,
 				2496768F1CE4B55F004FF186 /* QuestionLapViewController.swift in Sources */,
-				248F68D11CE253BA001C37E5 /* DispatchTimer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +266,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.notro.Timer;
 				PRODUCT_NAME = TinyTimer;
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -289,6 +279,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = uk.notro.Timer;
 				PRODUCT_NAME = TinyTimer;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
