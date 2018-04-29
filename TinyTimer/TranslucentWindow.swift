@@ -16,14 +16,14 @@ class TranslucentWindow: NSWindow {
 //        setup()
 //    }
 //    
-    override init(contentRect: NSRect, styleMask aStyle: NSWindowStyleMask, backing bufferingType: NSBackingStoreType, defer flag: Bool) {
+    override init(contentRect: NSRect, styleMask aStyle: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag)
         
         setup()
     }
     
     private func setup() {
-        self.level = Int(CGWindowLevelKey.floatingWindow.rawValue) // Make the window float
+        self.level = NSWindow.Level(rawValue: Int(CGWindowLevelKey.floatingWindow.rawValue)) // Make the window float
         self.ignoresMouseEvents = false // Don't ignore mouse events
         self.backgroundColor = self.backgroundColor.withAlphaComponent(0.0)
         self.isOpaque = true
@@ -38,12 +38,12 @@ class TranslucentWindow: NSWindow {
     // MARK: - Make the window draggable
     // Taken from https://developer.apple.com/library/mac/samplecode/RoundTransparentWindow/Listings/Classes_CustomWindow_m.html
     var initialClickLocation: NSPoint = NSPoint()
-    override func mouseDown(_ theEvent: NSEvent) {
+    override func mouseDown(with theEvent: NSEvent) {
         initialClickLocation = theEvent.locationInWindow
     }
     
-    override func mouseDragged(_ theEvent: NSEvent) {
-        guard let screenVisibleFrame = NSScreen.main()?.visibleFrame else { return }
+    override func mouseDragged(with theEvent: NSEvent) {
+        guard let screenVisibleFrame = NSScreen.main?.visibleFrame else { return }
         
         let windowFrame = self.frame
         var newOrigin = windowFrame.origin

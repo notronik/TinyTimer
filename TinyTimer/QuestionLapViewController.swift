@@ -9,9 +9,9 @@
 import Cocoa
 
 class QuestionLap: NSObject {
-    var questionNumber: Int
-    var duration: Date
-    var timeLeft: Date
+    @objc var questionNumber: Int
+    @objc var duration: Date
+    @objc var timeLeft: Date
     
     init(number questionNumber: Int, duration: Date, timeLeft: Date) {
         self.questionNumber = questionNumber
@@ -25,7 +25,7 @@ protocol QuestionLapDelegate {
 }
 
 class QuestionLapViewController: NSViewController {
-    dynamic var questions: [QuestionLap] = []
+    @objc dynamic var questions: [QuestionLap] = []
     var delegate: QuestionLapDelegate?
     
     override func viewDidLoad() {
