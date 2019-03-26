@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="B8D-0N-5wS">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14109"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
-        <capability name="stacking Non-gravity area distributions on NSStackView" minToolsVersion="7.0" minSystemVersion="10.11"/>
     </dependencies>
     <scenes>
         <!--Application-->
@@ -653,7 +652,7 @@
         <scene sceneID="R2V-B0-nI4">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="B8D-0N-5wS" sceneMemberID="viewController">
-                    <window key="window" title="TinyTimer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" animationBehavior="default" id="IQv-IB-iLA" customClass="TranslucentWindow" customModule="TinyTimer" customModuleProvider="target">
+                    <window key="window" title="TinyTimer" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" hasShadow="NO" releasedWhenClosed="NO" animationBehavior="default" id="IQv-IB-iLA" customClass="TranslucentWindow" customModule="TinyTimer" customModuleProvider="target">
                         <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="196" y="240" width="480" height="270"/>
@@ -676,20 +675,20 @@
             <objects>
                 <viewController id="XfG-lQ-9wD" customClass="TimerViewController" customModule="TinyTimer" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" wantsLayer="YES" id="hgf-nX-hOH">
-                        <rect key="frame" x="0.0" y="0.0" width="230" height="113"/>
+                        <rect key="frame" x="0.0" y="0.0" width="188" height="122"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <stackView distribution="fill" orientation="vertical" alignment="centerX" horizontalStackHuggingPriority="1000" verticalStackHuggingPriority="1000" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jVU-mT-wWd">
-                                <rect key="frame" x="0.0" y="0.0" width="230" height="113"/>
+                                <rect key="frame" x="0.0" y="0.0" width="188" height="122"/>
                                 <subviews>
                                     <textField identifier="Time Display" horizontalHuggingPriority="749" verticalHuggingPriority="500" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" translatesAutoresizingMaskIntoConstraints="NO" id="G0E-uV-nxu">
-                                        <rect key="frame" x="2" y="63" width="226" height="46"/>
+                                        <rect key="frame" x="2" y="63" width="184" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="LLP-DL-DXG"/>
                                         </constraints>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Label" id="Kfo-UX-3ee">
                                             <dateFormatter key="formatter" formatterBehavior="custom10_4" timeStyle="short" dateFormat="HH:mm:ss" id="ckC-Hj-Crw"/>
-                                            <font key="font" metaFont="system" size="38"/>
+                                            <font key="font" size="38" name="SFMono-Regular"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
@@ -706,11 +705,11 @@
                                         </connections>
                                     </textField>
                                     <textField focusRingType="none" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="H6f-Yb-kHq">
-                                        <rect key="frame" x="4" y="33" width="222" height="22"/>
+                                        <rect key="frame" x="4" y="33" width="180" height="22"/>
                                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" focusRingType="none" alignment="center" title="01:30:00" placeholderString="hh:mm:ss" drawsBackground="YES" usesSingleLineMode="YES" id="pbj-BU-5Tf">
                                             <dateFormatter key="formatter" formatterBehavior="custom10_4" timeStyle="short" dateFormat="HH:mm:ss" id="rUw-Jr-FjT"/>
                                             <font key="font" metaFont="system"/>
-                                            <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                         <connections>
@@ -719,10 +718,10 @@
                                         </connections>
                                     </textField>
                                     <stackView distribution="fillEqually" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="1000" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SDV-XM-LK1">
-                                        <rect key="frame" x="4" y="4" width="222" height="21"/>
+                                        <rect key="frame" x="4" y="4" width="180" height="21"/>
                                         <subviews>
                                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qoI-qc-eUI">
-                                                <rect key="frame" x="-6" y="-7" width="70" height="32"/>
+                                                <rect key="frame" x="-6" y="-7" width="192" height="32"/>
                                                 <buttonCell key="cell" type="push" title="Start" alternateTitle="Stop" bezelStyle="rounded" alignment="center" enabled="NO" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="LMn-rX-bnk">
                                                     <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                                                     <font key="font" metaFont="system"/>
@@ -731,35 +730,11 @@
                                                     <action selector="startStopBtnClick:" target="XfG-lQ-9wD" id="4Kh-QK-PCV"/>
                                                 </connections>
                                             </button>
-                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="5bk-0T-VU5">
-                                                <rect key="frame" x="60" y="-7" width="95" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Question" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="SdZ-rJ-zl5">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="questionBtnPress:" target="XfG-lQ-9wD" id="Wz6-gW-hXx"/>
-                                                </connections>
-                                            </button>
-                                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Jip-oJ-EUD">
-                                                <rect key="frame" x="151" y="-7" width="77" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Times" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="js4-oa-TxW">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <segue destination="ucu-tc-VI8" kind="popover" identifier="QuestionLapSegue" popoverAnchorView="Jip-oJ-EUD" popoverBehavior="t" preferredEdge="maxX" id="BMQ-Az-j93"/>
-                                                </connections>
-                                            </button>
                                         </subviews>
                                         <visibilityPriorities>
                                             <integer value="1000"/>
-                                            <integer value="1000"/>
-                                            <integer value="1000"/>
                                         </visibilityPriorities>
                                         <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                            <real value="3.4028234663852886e+38"/>
                                             <real value="3.4028234663852886e+38"/>
                                         </customSpacing>
                                     </stackView>
@@ -787,165 +762,13 @@
                     <connections>
                         <outlet property="bgView" destination="hgf-nX-hOH" id="aRZ-u9-pcu"/>
                         <outlet property="buttonBar" destination="SDV-XM-LK1" id="7Xv-oH-VGj"/>
-                        <outlet property="questionButton" destination="5bk-0T-VU5" id="cYA-H9-05x"/>
                         <outlet property="startButton" destination="qoI-qc-eUI" id="zq9-Br-rU5"/>
                         <outlet property="timeEdit" destination="H6f-Yb-kHq" id="LBe-VQ-Z4V"/>
-                        <outlet property="timesButton" destination="Jip-oJ-EUD" id="R0n-kC-gfx"/>
                     </connections>
                 </viewController>
                 <customObject id="rPt-NT-nkU" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="75" y="544.5"/>
-        </scene>
-        <!--Question Lap View Controller-->
-        <scene sceneID="ybT-5Z-LKW">
-            <objects>
-                <viewController showSeguePresentationStyle="single" id="ucu-tc-VI8" customClass="QuestionLapViewController" customModule="TinyTimer" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="UDE-aH-qpw">
-                        <rect key="frame" x="0.0" y="0.0" width="196" height="206"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <subviews>
-                            <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cRR-xe-QSa">
-                                <rect key="frame" x="3" y="3" width="190" height="200"/>
-                                <subviews>
-                                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yn3-XK-gO2">
-                                        <rect key="frame" x="0.0" y="29" width="190" height="171"/>
-                                        <clipView key="contentView" id="Dlf-if-l18">
-                                            <rect key="frame" x="1" y="0.0" width="188" height="170"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                            <subviews>
-                                                <tableView focusRingType="none" verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnSelection="YES" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" headerView="PQe-wi-CT2" id="ywY-4d-35s">
-                                                    <rect key="frame" x="0.0" y="0.0" width="188" height="147"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <size key="intercellSpacing" width="3" height="2"/>
-                                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
-                                                    <tableColumns>
-                                                        <tableColumn identifier="" editable="NO" width="53" minWidth="40" maxWidth="1000" id="DDz-lt-Sv5">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" title="Question">
-                                                                <font key="font" metaFont="smallSystem"/>
-                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
-                                                            </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="right" title="Text Cell" id="cJt-xz-8IQ">
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                            <connections>
-                                                                <binding destination="0jc-PV-1ho" name="value" keyPath="arrangedObjects.self.questionNumber" id="7Nq-gD-GPy"/>
-                                                            </connections>
-                                                        </tableColumn>
-                                                        <tableColumn identifier="" editable="NO" width="64" minWidth="10" maxWidth="3.4028234663852886e+38" id="zaT-jY-Meu">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Duration">
-                                                                <font key="font" metaFont="smallSystem"/>
-                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="HNT-eC-GQa">
-                                                                <dateFormatter key="formatter" formatterBehavior="custom10_4" timeStyle="short" dateFormat="HH:mm:ss" id="xzA-gc-wtJ"/>
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                            <connections>
-                                                                <binding destination="0jc-PV-1ho" name="value" keyPath="arrangedObjects.self.duration" id="pkc-cj-rhO"/>
-                                                            </connections>
-                                                        </tableColumn>
-                                                        <tableColumn identifier="" editable="NO" width="62" minWidth="10" maxWidth="3.4028234663852886e+38" id="Dzr-ne-vIG">
-                                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left" title="Time Left">
-                                                                <font key="font" metaFont="smallSystem"/>
-                                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                            </tableHeaderCell>
-                                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" alignment="left" title="Text Cell" id="Jc8-XD-Ep5">
-                                                                <dateFormatter key="formatter" formatterBehavior="custom10_4" timeStyle="short" dateFormat="HH:mm:ss" id="1n0-cu-RC0"/>
-                                                                <font key="font" metaFont="system"/>
-                                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
-                                                                <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                                            </textFieldCell>
-                                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
-                                                            <connections>
-                                                                <binding destination="0jc-PV-1ho" name="value" keyPath="arrangedObjects.self.timeLeft" id="eF6-YU-Ibg"/>
-                                                            </connections>
-                                                        </tableColumn>
-                                                    </tableColumns>
-                                                    <connections>
-                                                        <binding destination="0jc-PV-1ho" name="content" keyPath="arrangedObjects" id="sH6-JE-1oL"/>
-                                                    </connections>
-                                                </tableView>
-                                            </subviews>
-                                        </clipView>
-                                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="YES" id="OPA-Kj-JuJ">
-                                            <rect key="frame" x="1" y="154" width="188" height="16"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="CVN-K7-vZD">
-                                            <rect key="frame" x="224" y="17" width="15" height="102"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </scroller>
-                                        <tableHeaderView key="headerView" id="PQe-wi-CT2">
-                                            <rect key="frame" x="0.0" y="0.0" width="188" height="23"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </tableHeaderView>
-                                    </scrollView>
-                                    <stackView distribution="equalCentering" orientation="horizontal" alignment="top" horizontalStackHuggingPriority="250" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cCW-z4-vDt">
-                                        <rect key="frame" x="0.0" y="0.0" width="190" height="21"/>
-                                        <subviews>
-                                            <button horizontalHuggingPriority="1000" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eFg-EV-FHO">
-                                                <rect key="frame" x="59" y="-7" width="72" height="32"/>
-                                                <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="lNZ-PS-3e2">
-                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                    <font key="font" metaFont="system"/>
-                                                </buttonCell>
-                                                <connections>
-                                                    <action selector="clearButtonPressed:" target="ucu-tc-VI8" id="pJ5-Uk-Pnj"/>
-                                                </connections>
-                                            </button>
-                                        </subviews>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="190" id="wFU-Dy-FbX"/>
-                                        </constraints>
-                                        <visibilityPriorities>
-                                            <integer value="1000"/>
-                                        </visibilityPriorities>
-                                        <customSpacing>
-                                            <real value="3.4028234663852886e+38"/>
-                                        </customSpacing>
-                                    </stackView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="190" id="3BU-co-qs4"/>
-                                    <constraint firstAttribute="height" constant="200" id="4rK-dM-Js5"/>
-                                </constraints>
-                                <visibilityPriorities>
-                                    <integer value="1000"/>
-                                    <integer value="1000"/>
-                                </visibilityPriorities>
-                                <customSpacing>
-                                    <real value="3.4028234663852886e+38"/>
-                                    <real value="3.4028234663852886e+38"/>
-                                </customSpacing>
-                            </stackView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="cRR-xe-QSa" secondAttribute="trailing" constant="3" id="7nS-u6-Sbg"/>
-                            <constraint firstItem="cRR-xe-QSa" firstAttribute="leading" secondItem="UDE-aH-qpw" secondAttribute="leading" constant="3" id="8ns-RY-UYy"/>
-                            <constraint firstItem="cRR-xe-QSa" firstAttribute="top" secondItem="UDE-aH-qpw" secondAttribute="top" constant="3" id="HRl-vJ-y7h"/>
-                            <constraint firstAttribute="bottom" secondItem="cRR-xe-QSa" secondAttribute="bottom" constant="3" id="YdJ-lK-bjX"/>
-                        </constraints>
-                    </view>
-                </viewController>
-                <customObject id="Qp4-4k-iZC" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
-                <arrayController id="0jc-PV-1ho">
-                    <connections>
-                        <binding destination="ucu-tc-VI8" name="contentArray" keyPath="questions" id="ua5-yZ-Syr"/>
-                    </connections>
-                </arrayController>
-            </objects>
-            <point key="canvasLocation" x="75" y="850"/>
         </scene>
     </scenes>
 </document>

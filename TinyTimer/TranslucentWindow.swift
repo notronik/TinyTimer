@@ -3,19 +3,14 @@
 //  Timer
 //
 //  Created by Nik on 10/05/2016.
-//  Copyright © 2016 notro. All rights reserved.
+//  Copyright © 2016 Niklas Vangerow. All rights reserved.
 //
 
 import Cocoa
 import CoreGraphics
 
 class TranslucentWindow: NSWindow {
-//    required init?(coder: NSCoder) {
-//        super.init(coder: coder)
-//        
-//        setup()
-//    }
-//    
+
     override init(contentRect: NSRect, styleMask aStyle: NSWindow.StyleMask, backing bufferingType: NSWindow.BackingStoreType, defer flag: Bool) {
         super.init(contentRect: contentRect, styleMask: aStyle, backing: bufferingType, defer: flag)
         
